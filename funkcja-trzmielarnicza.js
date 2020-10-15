@@ -1,12 +1,14 @@
 $(function() {
     $("#calculate").on("click", function(event) {
-        let checkType = /[0-9]/
-        let functionResult;
-
-        if ($("#trzmielarnicza_input")[0].value.match(checkType) ) { // Sprawdzamy czy nasze wejscie jest liczba
-            functionResult = `Wynik: ${doStep( $("#trzmielarnicza_input")[0].value )}`;
-        } else {
-            functionResult = "Niepoprawne dane";
+        let checkType = /^[0-9]*$/;
+        let functionResult = "";
+        
+        if ($("#trzmielarnicza_input")[0].value != "") {
+            if ($("#trzmielarnicza_input")[0].value.match(checkType) ) { // Sprawdzamy czy nasze wejscie jest cyfra
+                functionResult = `Wynik: ${doStep( $("#trzmielarnicza_input")[0].value )}`;
+            } else {
+                functionResult = "Niepoprawne dane";
+            }
         }
 
         document.querySelector("#trzmielarnicza_result").innerText = functionResult.toString();
