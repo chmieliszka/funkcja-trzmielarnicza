@@ -1,11 +1,12 @@
 $(function() {
     $("#calculate").on("click", function(event) {
+        let checkType = /[0-9]/
         let functionResult;
 
-        if (isNaN($("#trzmielarnicza_input")[0].value) ) { // Sprawdzamy czy nasze wejscie nie jest liczba
-            functionResult = "Niepoprawne dane";
-        } else { // Jezeli jest liczba to wyswietl wynik, wraz z funkcja ktora wykonuje sie i zwroci wartosc
+        if ($("#trzmielarnicza_input")[0].value.match(checkType) ) { // Sprawdzamy czy nasze wejscie jest liczba
             functionResult = `Wynik: ${doStep( $("#trzmielarnicza_input")[0].value )}`;
+        } else {
+            functionResult = "Niepoprawne dane";
         }
 
         document.querySelector("#trzmielarnicza_result").innerText = functionResult.toString();
